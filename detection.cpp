@@ -39,7 +39,7 @@ const DebugChannelDef QDEngineMetaEngineDetection::debugFlagList[] = {
 };
 
 QDEngineMetaEngineDetection::QDEngineMetaEngineDetection() : AdvancedMetaEngineDetection(QDEngine::GAME_DESCRIPTIONS,
-	sizeof(ADGameDescription), QDEngine::GAME_NAMES) {
+	        sizeof(ADGameDescription), QDEngine::GAME_NAMES) {
 }
 
 REGISTER_PLUGIN_STATIC(QDENGINE_DETECTION, PLUGIN_TYPE_ENGINE_DETECTION, QDEngineMetaEngineDetection);
