@@ -28,6 +28,10 @@
 
 #ifdef __QD_TRIGGER_PROFILER__
 
+namespace Common {
+class String;
+}
+
 namespace QDEngine {
 
 class qdTriggerElement;
@@ -187,7 +191,7 @@ private:
 	bool _is_logging_enabled;
 	bool _is_read_only;
 
-	std::string _work_file;
+	Common::String _work_file;
 
 	static int _record_text_format;
 

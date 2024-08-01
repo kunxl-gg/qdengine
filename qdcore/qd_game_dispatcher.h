@@ -570,7 +570,7 @@ private:
 	/// таблица рекордов, если нету - размер нулевой
 	int _hall_of_fame_size;
 	struct HallOfFameEntry {
-		std::string _player_name;
+		Common::String _player_name;
 		int _score;
 
 		bool _updated;
@@ -626,15 +626,15 @@ private:
 
 	qdScreenTextDispatcher _screen_texts;
 
-	std::string _startup_scene;
+	Common::String _startup_scene;
 
 	//! Файл с субтитрами.
-	std::string _texts_database;
+	Common::String _texts_database;
 
 	//! Название игры.
-	std::string _game_title;
+	Common::String _game_title;
 
-	std::string _cd_key;
+	Common::String _cd_key;
 
 	void *_scene_loading_progress_data;
 	qdLoadingProgressFnc scene_loading_progress_fnc_;

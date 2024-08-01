@@ -627,9 +627,9 @@ private:
 	int mouse_cursor_id_;
 
 	//! Текст, выводимый на экран при работе состояния (для диалогов и т.д.)
-	std::string text_ID_;
+	Common::String text_ID_;
 	//! Короткий вариант текста, выводимого на экран при работе состояния (для диалогов и т.д.)
-	std::string short_text_ID_;
+	Common::String short_text_ID_;
 
 	//! Режим работы камеры, включается при активации состояния.
 	qdCameraMode camera_mode_;
@@ -908,7 +908,7 @@ public:
 private:
 
 	//! Имя объекта, к которому привязана маска.
-	std::string parent_name_;
+	Common::String parent_name_;
 
 	//! Указатель на объект, к которому привязана маска.
 	qdGameObject *parent_;

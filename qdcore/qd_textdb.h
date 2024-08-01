@@ -70,9 +70,11 @@ private:
 	struct qdText {
 		qdText(const char *text, const char *snd) : _text(text), _sound(snd) { }
 
-		std::string _text;
-		std::string _sound;
-		std::string _comment;
+		Common::String _text;
+		Common::String _sound;
+#ifndef _FINAL_VERSION_
+		Common::String _comment;
+#endif
 	};
 
 	typedef std::unordered_map<std::string, qdText> qdTextMap;

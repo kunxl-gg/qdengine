@@ -209,7 +209,7 @@ private:
 	byte *_data;
 	class rleBuffer *_rle_data;
 
-	std::string _file;
+	Common::String _file;
 
 	friend bool operator == (const qdSprite &sp1, const qdSprite &sp2);
 };

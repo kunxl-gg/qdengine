@@ -48,7 +48,7 @@ public:
 private:
 
 	//! Имя объекта.
-	std::string _name;
+	Common::String _name;
 };
 
 } // namespace QDEngine
