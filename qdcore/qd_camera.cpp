@@ -832,6 +832,7 @@ bool qdCamera::set_mode(const qdCameraMode &mode, qdGameObjectAnimated *object) 
 }
 
 bool qdCamera::quant(float dt) {
+	debugC(9, kDebugQuant, "qdCamera::quant(%f)", dt);
 	Vect2i last_pos = _scrCenter;
 
 	qdGameObjectAnimated *p = _current_object;
@@ -1017,6 +1018,7 @@ bool qdCamera::set_grid_attributes(const Vect2s &center_pos, const Vect2s &size,
 }
 
 bool qdCamera::drop_grid_attributes(const Vect2s &center_pos, const Vect2s &size, int attr) {
+	debugC(3, kDebugMovement, "qdCamera::drop_grid_attributes(): attr: %d", attr);
 	int x0 = center_pos.x - size.x / 2;
 	int y0 = center_pos.y - size.y / 2;
 
@@ -1042,6 +1044,8 @@ bool qdCamera::drop_grid_attributes(const Vect2s &center_pos, const Vect2s &size
 }
 
 bool qdCamera::set_grid_attributes(int attr) {
+	debugC(3, kDebugMovement, "qdCamera::set_grid_attributes(): attr: %d", attr);
+
 	sGridCell *p = _grid;
 	for (int i = 0; i < _GSX * _GSY; i++, p++)
 		p->set_attribute(attr);
@@ -1050,6 +1054,8 @@ bool qdCamera::set_grid_attributes(int attr) {
 }
 
 bool qdCamera::drop_grid_attributes(int attr) {
+	debugC(3, kDebugMovement, "qdCamera::drop_grid_attributes(): attr: %d", attr);
+
 	sGridCell *p = _grid;
 	for (int i = 0; i < _GSX * _GSY; i++, p++)
 		p->drop_attribute(attr);
@@ -1058,6 +1064,8 @@ bool qdCamera::drop_grid_attributes(int attr) {
 }
 
 bool qdCamera::check_grid_attributes(const Vect2s &center_pos, const Vect2s &size, int attr) const {
+	debugC(3, kDebugMovement, "qdCamera::check_grid_attributes(): attr: %d", attr);
+
 	int x0 = center_pos.x - size.x / 2;
 	int y0 = center_pos.y - size.y / 2;
 
@@ -1085,6 +1093,8 @@ bool qdCamera::check_grid_attributes(const Vect2s &center_pos, const Vect2s &siz
 }
 
 int qdCamera::cells_num_with_exact_attributes(const Vect2s &center_pos, const Vect2s &size, int attr) const {
+	debugC(3, kDebugMovement, "qdCamera::cells_num_with_exact_attributes(): attr: %d", attr);
+
 	int x0 = center_pos.x - size.x / 2;
 	int y0 = center_pos.y - size.y / 2;
 
@@ -1134,7 +1144,6 @@ bool qdCamera::is_walkable(const Vect2s &center_pos, const Vect2s &size, bool ig
 
 	for (int y = y0; y < y1; y++) {
 		const sGridCell *p = cells;
-
 		for (int x = x0; x < x1; x++, p++) {
 			debugC(3, kDebugMovement, "qdCamera::is_walkable(): attr %d at [%d, %d]", p->attributes(), x, y);
 			if (p->check_attribute(attr) && !p->check_attribute(sGridCell::CELL_SELECTED)) {

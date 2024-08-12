@@ -367,13 +367,16 @@ bool qdGameObjectMoving::find_path(const Vect3f target, bool lock_target) {
 	if (!adjust_position(trg))
 		return false;
 
+	debugC(3, kDebugMovement, "qdGameObjectMoving::find_path(): Set Attribute: sGridCell::CELL_SELECTED");
 	set_grid_zone_attributes(sGridCell::CELL_SELECTED);
 
 	_target_angle = -1.0f;
 
-	debugC(3, kDebugMovement, "qdGameObjectMoving::find_path() _is_walkable: %d", is_walkable(trg));
+	bool isWalkable = is_walkable(trg);
+	debugC(3, kDebugMovement, "qdGameObjectMoving::find_path() _is_walkable: %d", isWalkable);
 
-	if (!is_walkable(trg)) {
+	if (!isWalkable) {
+		debugC(3, kDebugMovement, "qdGameObjectMoving::find_path(): lock_target: %d, check_grid_zone_attributes: %d", lock_target, check_grid_zone_attributes(sGridCell::CELL_IMPASSABLE));
 		if (lock_target || check_grid_zone_attributes(sGridCell::CELL_IMPASSABLE)) return false;
 
 		Vect2s pt;
@@ -1956,6 +1959,7 @@ bool qdGameObjectMoving::keyboard_move() {
 
 bool qdGameObjectMoving::set_walk_animation() {
 	debugC(5, kDebugMovement, "qdGameObjectMoving::set_walk_animation()");
+
 	float tm = 0.0f;
 
 	if (check_flag(QD_OBJ_MOVING_FLAG))

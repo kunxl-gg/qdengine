@@ -1435,6 +1435,7 @@ bool qdGameObjectAnimated::check_grid_zone_attributes(const Vect2f &r, int attr)
 }
 
 bool qdGameObjectAnimated::set_grid_zone_attributes(int attr) const {
+	debugC(3, kDebugMovement, "qdGameObjectAnimated::set_grid_zone_attributes(): attr: %d, x: %f, y: %f", attr, _grid_r.x, _grid_r.y);
 	return set_grid_zone_attributes(_grid_r, attr);
 }
 
