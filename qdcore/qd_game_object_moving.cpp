@@ -2263,53 +2263,6 @@ bool qdGameObjectMoving::del_coll_pts(Std::list<Vect2i> &path) const {
 	return is_del;
 }
 
-// Вспомогательная функция - пытается спрямить отрезок пути из четырех точек, начиная с cur
-/*
-bool qdGameObjectMoving::four_pts_eight_dir_straight(Std::list<Vect2i> path,
-                                                     const Std::list<Vect2i>::iterator cur) const
-{
-    // Извлекаем четыре точки
-    Vect2i pts[4];
-    Std::list<Vect2i>::iterator buf = cur;
-    for (int i = 0; i < 4; i++)
-    {
-        if (path.end() == buf) return false;
-        pts[i] = (*buf);
-        ++buf;
-    }
-    // Проверяем - является ли четверка точек "вытянутым зигзагом"
-    if ((fabs(vec_cos(pts[1] - pts[0], pts[2] - pts[1]) - SQRT_2_DIV_2) > 0.0001) ||
-        (fabs(vec_cos(pts[2] - pts[1], pts[3] - pts[2]) - SQRT_2_DIV_2) > 0.0001) ||
-        !coll(pts[1] - pts[0], pts[3] - pts[2]))
-        return false;
-
-    // Проверяем, проходИм ли новый, спрямленный путь
-    Vect2i pnt;
-    for (int i = 0; i < 2; i++)
-    {
-        if (0 == i) pnt = pts[3] - pts[2] + pts[1];
-        else pnt = pts[0] + pts[2] - pts[1];
-
-        if (is_path_walkable(pts[0], pnt) &&
-            is_path_walkable(pnt, pts[3]))
-        {
-            // Удаляем две промежуточные
-            buf = cur;
-            path.erase(++buf);
-            buf = cur;
-            path.erase(++buf);
-            // Добавляем новую перед указателем на следующую
-            buf = cur;
-            ++buf;
-            path.insert(buf, pnt);
-            return true;
-        }
-    }
-
-    return false;
-}
-*/
-
 bool qdGameObjectMoving::four_pts_eight_dir_straight(Std::list<Vect2i> &path, Std::list<Vect2i>::reverse_iterator cur) const {
 	// Извлекаем четыре точки
 	Vect2i pts[4], opt_pts[4];
